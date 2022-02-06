@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+
+    <!-- header -->
+    <h1 class = "center title">NONRESTORING DIVISION</h1>
+
+    <!-- options -->
+    <div class = "grid">
+        <div class = "grid-item">
+            <div class = "center">SELECT INPUT TYPE:</div>
+            <form>
+                <input type="radio" id="binary" name="inputType" value="1" checked="checked">
+                <label for="binary">BINARY</label><br>
+                <input type="radio" id="decimal" name="inputType" value="0">
+                <label for="decimal">DECIMAL</label><br>
+            </form>
+        </div>
+        <div  class = "grid-item">
+            <div class = "center">SELECT OUTPUT TYPE:</div>
+            <form>    
+                <input type="radio" id="stepByStep" name="outputType" value="1" checked="checked">
+                <label for="stepByStep">STEP-BY-STEP</label><br>
+                <input type="radio" id="allSteps" name="outputType" value="0">
+                <label for="allSteps">ALL</label><br>
+            </form>
+        </div>
+    </div>
+    
+    <br>
+   <div id="inputs"> 
+	<p class="subtitle center">DIVIDEND:</p>
+    <input type="number" class="input" id="floatingDividend" placeholder="">
+
+    <br>    
+
+    <p class="subtitle center">DIVISOR:</p>
+	<input type="number" class="input" id="floatingDivisor" placeholder=""> <br>   
+    
+    <br>
+    <div class="center"><input type="submit" value="SUBMIT" id="submit" onclick="Submit()"/></div>
+    
+    <div class = "error center" id="error_msg"></div>
+
+   </div>
+
+
+    <hr class = "line">
+
+    <div id="result" class="bottom-part center" style="display: none;">
+        <!--<div class = "a-container">
+             <div><b style="color: white;">M</b></div>
+            <div id="m" class="a-box">00000</div>
+            <div id="nm" class="c-box">00000</div>
+            <div><b style="color: white;">-M</b></div>
+        </div>
+
+        <br>
+
+        <div class = "a-container">
+            <div><b style="color: white;">A</b></div>
+            <div id="a" class="a-box">00000</div>
+            <div id="q" class="b-box">00000</div>
+            <div><b style="color: white;">Q</b></div>
+        </div>-->
+
+        <table class="given">
+        <tr>
+            <th>M</th>
+            <th id="m">00000</th>
+            <th>-M</th>
+            <th id="nm">00000</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <th id="a">00000</td>
+            <th>Q</th>
+            <th id="q">00000</th>
+        </tr>
+        </table>
+
+        <br>
+
+        <!-- <div id="step" class="step">
+            <div class="iteration">
+                <div><b>ITERATION</b></div>
+                <div class="i-num" id="iteration-num"><b>1</b></div>
+            </div>
+            
+            <div class = "a-container">
+                <div><b>A</b></div>
+                <div class="a-box" id="a">00000</div>
+                <div class="q-box" id="q">00000</div>
+                <div><b>Q</b></div>
+            </div>
+        </div> -->
+
+        <div class="i-num" id="iteration-num"><b></b></div> 
+
+        <br>
+
+
+
+        <table id="aqtable" cellspacing="0" cellpadding="0" class="table">
+        </table>
+
+        <br>
+        
+        <button type="button" value=" Next Step" id="Step" onclick="nextStep()" class="step-btn">START</button>
+
+        <br>
+
+        <button type="button" value=" Next Step" id="Again" onclick="inputAgain()" class="again-btn" style="visibility: hidden;">INPUT AGAIN</button>
+        
+        <button type="button" value="textfile" id="textfile" onclick="textFile()" class="again-btn" style="visibility: hidden;">SAVE AS TEXT FILE</button>
+    </div>
+
+    <!-- <script>
+    function submitFunction() {
+        var x = document.getElementById("result");
+        if (x.style.display === "none") {
+             x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+    }
+    </script> -->
+    <script type="text/javascript" src="script.js"></script> 
+  </body>
+</html>
+
+<!-- style="display: none;" -->
