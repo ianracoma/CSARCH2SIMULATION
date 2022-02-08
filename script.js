@@ -18,7 +18,12 @@ function Submit() {
   var dividendStr = document.getElementById("floatingDividend").value;
   var errorBox = document.getElementById("error_msg");
 
-  var regexTest = /[01\-+]$/
+  var nullDividend = false;
+  var nullDivisor = false;
+
+  var binaryTest = /^[01\-]+$/
+  var negativeTest = /^-/
+  var numberTest = /^[0-9]+$/
   
 
   //error validation
@@ -26,16 +31,15 @@ function Submit() {
     dividendInt = parseInt(dividendStr);
   
   // Dividend Validation - General
-
   if (dividendStr == "" || dividendStr == null) {
+    nullDividend = true;
     errors.push("Dividend: Null is not a valid input.")
   }
 
   // Dividend Validation - Binary
-
+if (!nullDividend) {
   if (binaryVal.checked) {
-    if (!(isNaN(dividendInt))) {
-      if (!regexTest.test(dividendStr)) {
+      if (!binaryTest.test(dividendStr) || (!negativeTest.test(dividendStr) && dividendStr.includes('-'))) {
         errors.push("Dividend: Binary inputs can only contain 0s and 1s");
       } else if (dividendInt < 0) {
         errors.push("Dividend: Values for binary inputs cannot be negative.");
@@ -43,31 +47,35 @@ function Submit() {
         errors.push("Dividend: Binary value above maximum range");
       }
     }
-  }
 
   // Dividend Validation - Decimal
 
-  if (decimalVal.checked) {
-    if (!isNaN(dividendInt) && (dividendInt > 65535 || dividendInt < 0)){
-      errors.push("Dividend: Value is not within the given range for decimal inputs (0 - 65535).")
+  else if (decimalVal.checked) {
+      if (!numberTest.test(dividendStr)) {
+        errors.push("Dividend: Value inputted is not a valid decimal integer.")
+      }
+      else if (dividendInt > 65535 || dividendInt < 0){
+        errors.push("Dividend: Value is not within the given range for decimal inputs (0 - 65535).")
+      }
     }
   }
 
+
   // Divisor Validation - General
   if (divisorInt == 0 && !isNaN(divisorInt)) {
+    nullDivisor = true;
     errors.push("Divisor: Value cannot be 0");
   }
 
   if (divisorStr == "" || divisorStr == null) {
+    nullDivisor = true;
     errors.push("Divisor: Null is not a valid input.");
   }
 
   // Divisor Validation - Binary
-
+if (!nullDivisor) {
   if (binaryVal.checked) {
-    if (!isNaN(divisorInt)) {
-      if (!regexTest.test(divisorStr)) {
-        console.log(divisorStr);
+      if (!binaryTest.test(divisorStr) || (!negativeTest.test(divisorStr) && dividendStr.includes('-'))) {
         errors.push("Divisor: Binary inputs can only contain 0s and 1s");
       } else if (divisorInt < 0) {
         errors.push("Divisor: Values for binary inputs cannot be negative.");
@@ -76,15 +84,19 @@ function Submit() {
         errors.push("Divisor: Binary value above maximum range");
       }
     }
-  }
 
   // Dividend Validation - Decimal
 
-  if (decimalVal.checked) {
-    if (!isNaN(divisorInt) && (divisorInt > 65535 || divisorInt < 0)) {
-      errors.push("Dividend: Value is not within the given range for decimal inputs (0 - 65535).")
+  else if (decimalVal.checked) {
+    if (!numberTest.test(divisorStr) && !negativeTest.test(divisorStr)) {
+      errors.push("Divisor: Value inputted is not a valid decimal integer.")
+    }
+    else if (divisorInt > 65535 || divisorInt < 0){
+      errors.push("Divisor: Value is not within the given range for decimal inputs (0 - 65535).")
     }
   }
+}
+  
 
   //if no errors
   if (errors.length == 0) {
