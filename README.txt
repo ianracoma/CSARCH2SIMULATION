@@ -14,16 +14,6 @@ Racoma, Ian Angelo
 
 
 ====================================================================
-0. Readme Table of Contents
-====================================================================
-
-
-1. Application Purpose
-2. Application How-to-use
-3. Message to the user
-
-
-====================================================================
 1. Application Purpose and Features
 ====================================================================
 
@@ -59,11 +49,3 @@ The usage of the application is simple:
 7) If you have selected "All", all steps will be shown immediately, if you have selected "Step-by-step" however, press "NEXT STEP" to advance to the next iteration.
 
 8) Once all iterations have been performed, you may either opt to input another set of values using the "Input Again" button, or download the results of the computation by clicking the "SAVE AS TEXT FILE BUTTON"
-
-
-====================================================================
-3. Message to the user
-====================================================================
-
-
-Lorem Ipsum Dolor Sit Amet
